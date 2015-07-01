@@ -715,12 +715,6 @@ public class BrowserActivity extends ThemableActivity implements BrowserControll
 		String url = null;
 		if (getIntent() != null) {
 			url = getIntent().getDataString();
-			if (url != null) {
-				if (url.startsWith(Constants.FILE)) {
-					Utils.showToast(this, getResources().getString(R.string.message_blocked_local));
-					url = null;
-				}
-			}
 		}
 		if (mPreferences.getRestoreLostTabsEnabled()) {
 			String mem = mPreferences.getMemoryUrl();
@@ -1229,10 +1223,6 @@ public class BrowserActivity extends ThemableActivity implements BrowserControll
 		if (num == 1) {
 			mCurrentView.loadUrl(url);
 		} else if (url != null) {
-			if (url.startsWith(Constants.FILE)) {
-				Utils.showToast(this, getResources().getString(R.string.message_blocked_local));
-				url = null;
-			}
 			newTab(url, true);
 			mIsNewIntent = true;
 		}
